@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project-nexus"
+version = "1.0.0"
+description = "Local-first dashboard that discovers, analyses and visualises the software projects on your machine."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Project Nexus" }]
+keywords = ["projects", "dashboard", "local-first", "git", "visualization"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Environment :: Web Environment",
+  "Topic :: Software Development",
+]
+dependencies = []
+
+[project.optional-dependencies]
+desktop = ["pywebview>=5.0"]
+dev = ["pytest>=8", "pyinstaller>=6.6"]
+
+[project.scripts]
+nexus = "nexus.cli:main"
+project-nexus = "nexus.cli:main"
+
+[tool.setuptools]
+packages = ["nexus"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+nexus = ["static/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = ["slow: long-running performance tests"]
+
+[tool.ruff]
+line-length = 160
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I"]
+ignore = ["E501"]   # long single-line rules/tables are deliberate in this codebase

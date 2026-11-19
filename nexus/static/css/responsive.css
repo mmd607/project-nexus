@@ -1,0 +1,80 @@
+/* Tablet: 768–1199px — collapse sidebar to icons, details becomes an overlay drawer. */
+@media (max-width: 1199px) {
+  :root { --sidebar-w: 64px; }
+  .shell { grid-template-columns: var(--sidebar-w) minmax(0, 1fr) 0; }
+  .shell .details { display: none; }
+  .shell.details-open .details { display: flex; position: fixed; top: calc(var(--topbar-h) + 4px); right: 8px; bottom: 8px; width: min(400px, calc(100vw - 16px)); z-index: 40; box-shadow: var(--shadow); }
+  .nav a span, .nav a .count { display: none; }
+  .nav a { justify-content: center; padding: 12px 0; }
+  .workspace-card small, .workspace-card b, .workspace-card .chev { display: none; }
+  .workspace-card { justify-content: center; padding: 10px 0; }
+  .side-stats, .scan-widget .text { display: none; }
+  .scan-widget { padding: 6px; }
+  .brand small { display: none; }
+  .search label { width: 100%; }
+  .stats-card { gap: 10px; padding: 8px 10px; }
+  .stats-card b { font-size: 14px; }
+  .stats-card button { min-width: 44px; }
+  .filter-bar { max-width: calc(100% - 260px); }
+}
+
+@media (max-width: 1000px) { .canvas-hint { display: none; } }
+
+/* Phone: ≤ 767px — bottom navigation, sheet-style details, stacked controls. */
+@media (max-width: 767px) {
+  :root { --topbar-h: 56px; --gap: 6px; }
+  .shell { grid-template-columns: minmax(0, 1fr); grid-template-rows: var(--topbar-h) minmax(0, 1fr) 56px; grid-template-areas: "top" "main" "nav"; padding: 0 var(--gap) var(--gap); }
+  .sidebar { display: none; }
+  .mobile-nav { display: flex; grid-area: nav; justify-content: space-around; align-items: center; background: var(--layer); border: 1px solid var(--border); border-radius: 12px; }
+  .mobile-nav a { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 8px; min-width: 56px; font-size: 10px; color: var(--text-muted); border-radius: 8px; }
+  .mobile-nav a svg { width: 20px; height: 20px; }
+  .mobile-nav a[aria-current="page"] { color: var(--red); }
+  .topbar { gap: 8px; }
+  .brand strong { display: none; }
+  .search input { height: 36px; padding-right: 12px; }
+  .search .kbd { display: none; }
+  .topbar-actions .avatar { display: none; }
+  .shell.details-open .details { display: flex; position: fixed; left: 0; right: 0; bottom: 0; top: 18vh; width: auto; border-radius: 18px 18px 0 0; z-index: 40; }
+  .sheet-handle { display: block; width: 44px; height: 4px; border-radius: 4px; background: var(--border-strong); margin: 8px auto 0; }
+  .stats-card { top: auto; bottom: 76px; right: 10px; left: 10px; justify-content: space-around; gap: 4px; padding: 8px; }
+  .stats-card .close { display: none; }
+  .filter-bar { top: 10px; left: 10px; max-width: calc(100% - 20px); }
+  .canvas-hint { display: none; }
+  .graph-controls { bottom: 130px; left: 10px; }
+  .dpad { width: 90px; height: 90px; }
+  .dpad .up { left: 30px; } .dpad .down { left: 30px; } .dpad .left { top: 30px; } .dpad .right { top: 30px; }
+  .dpad .center { left: 25px; top: 25px; }
+  .control-list button span { display: none; }
+  .control-list button { padding: 8px; justify-content: center; }
+  .mode-toggle { bottom: 130px; right: 10px; }
+  .view { padding: 12px; }
+  .kg-list { max-height: 40%; }
+  .modal { padding: 14px; }
+  .toasts { right: 8px; left: 8px; bottom: 66px; max-width: none; }
+}
+
+@media (min-width: 1600px) {
+  :root { --sidebar-w: 220px; --details-w: 380px; }
+}
+
+@media (pointer: coarse) {
+  .btn, .dpad button, .control-list button, .segmented button { min-height: 40px; }
+  .chip { padding: 6px 12px; }
+}
+
+/* RTL (Persian UI) */
+[dir="rtl"] .search svg { left: auto; right: 14px; }
+[dir="rtl"] .search input { padding: 0 40px 0 70px; }
+[dir="rtl"] .search .kbd { right: auto; left: 12px; }
+[dir="rtl"] .stats-card { right: auto; left: 14px; }
+[dir="rtl"] .filter-bar { left: auto; right: 14px; }
+[dir="rtl"] .graph-controls { left: auto; right: 14px; }
+[dir="rtl"] .mode-toggle { right: auto; left: 14px; }
+[dir="rtl"] .nav a .count { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .workspace-card .chev { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .brand small { margin-left: 0; margin-right: 4px; }
+[dir="rtl"] .toasts { right: auto; left: 16px; }
+[dir="rtl"] .toast { border-left: 1px solid var(--border-strong); border-right: 3px solid var(--red); }
+[dir="rtl"] .ws-item .actions { justify-content: flex-start; }
+[dir="rtl"] .sub-list button, [dir="rtl"] .control-list button, [dir="rtl"] .browser button { text-align: right; }
+@media (max-width: 1199px) { [dir="rtl"] .shell.details-open .details { right: auto; left: 8px; } }

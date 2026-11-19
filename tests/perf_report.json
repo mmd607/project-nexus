@@ -1,0 +1,13 @@
+{
+  "projects": 255,
+  "files": 2029,
+  "full_scan_seconds": 2.77,
+  "incremental_scan_seconds": 0.96,
+  "list_projects_ms": 31.5,
+  "knowledge_graph_ms": 36.5,
+  "graph_nodes": 317,
+  "graph_edges": 6737,
+  "python": "3.13.0",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "machine": "AMD64"
+}
